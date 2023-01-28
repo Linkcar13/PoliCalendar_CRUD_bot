@@ -1,0 +1,1003 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" focusTraversable="true" prefHeight="542.0" prefWidth="764.0" style="-fx-background-color: TRANSPARENT;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PoliCalendar.Controlador.VentanaController">
+    <children>
+        <AnchorPane focusTraversable="true" prefHeight="443.0" prefWidth="201.0" style="-fx-background-color: #42456b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" visible="false" />
+                        <Label alignment="CENTER" prefHeight="16.0" prefWidth="200.0" text="POLICALENDAR" textAlignment="JUSTIFY" textFill="WHITE">
+                            <font>
+                                <Font name="Roboto Black Italic" size="25.0" />
+                            </font>
+                        </Label>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" visible="false" />
+                        <ImageView fx:id="BtnHome" fitHeight="150.0" fitWidth="200.0" onMousePressed="#Home" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@buho.png" />
+                            </image>
+                            <VBox.margin>
+                                <Insets right="10.0" />
+                            </VBox.margin>
+                        </ImageView>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" visible="false" />
+                        <JFXButton fx:id="BtnRegistro" onMouseEntered="#FocusButtons1" onMouseExited="#UnFocusButtons1" onMousePressed="#Seccion1" prefHeight="68.0" prefWidth="201.0" text="Nuevo Resgistro" textFill="WHITE">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="20.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="BtnEliminar" onMouseEntered="#FocusButtons2" onMouseExited="#UnFocusButtons2" onMousePressed="#DelInit" prefHeight="45.0" prefWidth="201.0" text="Eliminar Registro" textFill="WHITE">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="20.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="BtnModificar" onMouseEntered="#FocusButtons4" onMouseExited="#UnFocusButtons4" onMousePressed="#ModInit" prefHeight="45.0" prefWidth="201.0" text="Modificar Registro" textFill="WHITE">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="20.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="BtnVisualizar" onMouseEntered="#FocusButtons3" onMouseExited="#UnFocusButtons3" onMousePressed="#VistasHome" prefHeight="45.0" prefWidth="201.0" text="Vizualizar Datos" textFill="WHITE">
+                            <font>
+                                <Font name="Roboto Black Italic" size="20.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="BtnLogOut" onMouseEntered="#FocusButtons5" onMouseExited="#UnFocusButtons5" onMousePressed="#Logout" prefHeight="45.0" prefWidth="201.0" text="Log Out" textFill="WHITE">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="20.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" visible="false" />
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <AnchorPane focusTraversable="true" prefHeight="200.0" prefWidth="563.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <AnchorPane fx:id="SeccionHome" prefHeight="200.0" prefWidth="563.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Label layoutX="227.0" layoutY="55.0" text="Bienvenido!!">
+                            <font>
+                                <Font name="Roboto Black Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <Text layoutX="113.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Este es un Sistema de administracion de recordatorios para las actividades que se le asignan a los estudiantes de la EPN en el aula virtual, desarrollado por y para estudiantes, el sistema enviara los recordatorios a traves de un bot de Telegram directamente a los dispositivos moviles de los estudiantes." textAlignment="JUSTIFY" wrappingWidth="354.0000000000001" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="218.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@buhoportada.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="Seccion1" prefHeight="110.0" prefWidth="563.0" style="-fx-background-color: #42456b;" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="RegistrarE1" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons6" onMouseExited="#UnFocusButtons6" onMousePressed="#Seccion2" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@anadire.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="RegistrarF" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons7" onMouseExited="#UnFocusButtons7" onMousePressed="#Seccion3" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@facultad.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="RegistrarM" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons8" onMouseExited="#UnFocusButtons8" onMousePressed="#Seccion4" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@anadirmat.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="Registrar4" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons9" onMouseExited="#UnFocusButtons9" onMousePressed="#Seccion5" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@anadir.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="Seccion2" layoutX="53.0" layoutY="208.0" prefHeight="432.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="93.0" fitWidth="64.0" layoutX="232.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@estudiante1.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="46.0" layoutY="181.0" text="Nombre">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtEstudiante" layoutX="115.0" layoutY="181.0" prefHeight="25.0" prefWidth="149.0" promptText="ingrese su nombre">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="TEXT" />
+                            </cursor>
+                        </TextField>
+                        <JFXComboBox fx:id="ComboFacultad" layoutX="115.0" layoutY="277.0" />
+                        <Label layoutX="45.0" layoutY="277.0" text="Facultad">
+                            <font>
+                                <Font name="System Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="93.0" fitWidth="64.0" layoutX="296.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@estudiante2.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="175.0" layoutY="37.0" text="Registrar Nuevo estudiante">
+                            <font>
+                                <Font name="Roboto Black Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="286.0" layoutY="181.0" text="Semestre">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtSemestre" layoutX="360.0" layoutY="181.0" prefHeight="25.0" prefWidth="149.0" promptText="ingrese el semestre que cursa">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <cursor>
+                                <Cursor fx:constant="TEXT" />
+                            </cursor>
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                        <JFXButton fx:id="BtnSaveEstudiante" layoutX="264.0" layoutY="329.0" onMousePressed="#SaveStudent" ripplerFill="#42456b" style="-fx-background-color: #b2cdf7;" text="Save">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="13.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </JFXButton>
+                        <TextField fx:id="TxtCodUnico" layoutX="360.0" layoutY="273.0" prefHeight="25.0" prefWidth="150.0" promptText="ingrese su cod unico">
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                        <Label layoutX="261.0" layoutY="277.0" text="Código único">
+                            <font>
+                                <Font name="System Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="49.0" layoutY="233.0" text="Carrera">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtCarrera" layoutX="115.0" layoutY="233.0" prefHeight="25.0" prefWidth="150.0" promptText="ingrese el nombre de la carrera">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                        <Label layoutX="310.0" layoutY="233.0" text="Edad">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtEdad" layoutX="360.0" layoutY="233.0" prefHeight="25.0" prefWidth="150.0" promptText="Ingrese edad">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="Seccion3" layoutX="52.0" layoutY="140.0" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Label layoutX="160.0" layoutY="214.0" text="Nombre">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="189.0" layoutY="41.0" text="Registrar Nueva Carrera">
+                            <font>
+                                <Font name="Roboto Black Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtSCarrera" layoutX="229.0" layoutY="214.0" prefHeight="25.0" prefWidth="164.0" promptText="ingrese el nombre de la carrera">
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="262.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@academico.png" />
+                            </image>
+                        </ImageView>
+                        <JFXButton fx:id="BtnSaveCarrera" layoutX="272.0" layoutY="350.0" onMousePressed="#SaveCarrera" ripplerFill="#42456b" style="-fx-background-color: #b2cdf7;" text="Save">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="13.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </JFXButton>
+                        <JFXComboBox fx:id="ComboSCFacultad" layoutX="146.0" layoutY="281.0" />
+                        <JFXComboBox fx:id="ComboModalidad" layoutX="371.0" layoutY="281.0" />
+                        <Label layoutX="77.0" layoutY="281.0" text="Facultad">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="282.0" layoutY="281.0" text="Modalidad">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="Seccion4" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Label layoutX="195.0" layoutY="42.0" text="Agregar Nueva Materia">
+                            <font>
+                                <Font name="Roboto Black Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="266.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+                            <effect>
+                                <Bloom />
+                            </effect>
+                            <image>
+                                <Image url="@libro.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="115.0" layoutY="198.0" text="Codigo de Materia">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <JFXComboBox layoutX="251.0" layoutY="285.0" prefHeight="24.0" prefWidth="165.0" />
+                        <TextField layoutX="250.0" layoutY="196.0" />
+                        <TextField layoutX="250.0" layoutY="239.0" />
+                        <JFXButton layoutX="282.0" layoutY="332.0" ripplerFill="#42456b" style="-fx-background-color: #b2cdf7;" text="Save">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="13.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </JFXButton>
+                        <Label layoutX="163.0" layoutY="241.0" text="Nombre">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="176.0" layoutY="287.0" text="Tipo">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="Seccion5" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Label layoutX="209.0" layoutY="38.0" text="Nueva Matricula">
+                            <font>
+                                <Font name="Roboto Black Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="250.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@aula.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="202.0" layoutY="288.0" text="Materia">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="109.0" layoutY="206.0" text="Numero de matricula">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="87.0" layoutY="248.0" text="Codigo Unico Estudiante">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <JFXComboBox fx:id="ComboBoxMatricula" layoutX="271.0" layoutY="286.0" prefHeight="24.0" prefWidth="171.0" />
+                        <TextField layoutX="270.0" layoutY="204.0" />
+                        <TextField layoutX="270.0" layoutY="246.0" />
+                        <JFXButton layoutX="259.0" layoutY="354.0" ripplerFill="#42456b" style="-fx-background-color: #b2cdf7;" text="Save">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="13.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </JFXButton>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionVistas" prefHeight="110.0" prefWidth="563.0" style="-fx-background-color: #42456b;" visible="false">
+                    <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="VisualizarE" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons12" onMouseExited="#UnFocusButtons12" onMousePressed="#VistasD" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@grupo-de-lectura.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="VisualizarF" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons13" onMouseExited="#UnFocusButtons13" onMousePressed="#VistasF" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@libros-educativos.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="VisualizarM" fitHeight="64.0" fitWidth="64.0" focusTraversable="true" onMouseEntered="#FocusButtons14" onMouseExited="#UnFocusButtons14" onMousePressed="#VistasM" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@recordatorios.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="VisualizarA" fitHeight="64.0" fitWidth="64.0" focusTraversable="true" onMouseEntered="#FocusButtons15" onMouseExited="#UnFocusButtons15" onMousePressed="#VistasA" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@lista-de-tareas.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionTE" prefHeight="361.0" prefWidth="563.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <JFXTreeTableView fx:id="tablaEstudiante" layoutX="141.0" layoutY="97.0" prefHeight="361.0" prefWidth="563.0" stylesheets="@main.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionTF" prefHeight="361.0" prefWidth="563.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <JFXTreeTableView fx:id="TablaCarrera" layoutX="141.0" layoutY="97.0" prefHeight="361.0" prefWidth="563.0" stylesheets="@main.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionTM" prefHeight="361.0" prefWidth="563.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <JFXTreeTableView fx:id="TablaRecordatorio" layoutX="141.0" layoutY="97.0" prefHeight="361.0" prefWidth="563.0" stylesheets="@main.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionTA" prefHeight="361.0" prefWidth="563.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <JFXTreeTableView fx:id="TablaActividad" currentItemsCount="5" layoutX="141.0" layoutY="97.0" prefHeight="361.0" prefWidth="563.0" stylesheets="@main.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionM2" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="93.0" fitWidth="64.0" layoutX="232.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@estudiante1.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="46.0" layoutY="181.0" text="Nombre">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtModEstudiante" layoutX="115.0" layoutY="181.0" prefHeight="25.0" prefWidth="149.0" promptText="ingrese su nombre">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="TEXT" />
+                            </cursor>
+                        </TextField>
+                        <JFXComboBox fx:id="ComboFacultad1" layoutX="115.0" layoutY="277.0" />
+                        <Label layoutX="45.0" layoutY="277.0" text="Facultad">
+                            <font>
+                                <Font name="System Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="93.0" fitWidth="64.0" layoutX="296.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@estudiante2.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="175.0" layoutY="37.0" text="Modificar estudiante">
+                            <font>
+                                <Font name="Roboto Black Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="286.0" layoutY="181.0" text="Semestre">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtModSemestre" layoutX="360.0" layoutY="181.0" prefHeight="25.0" prefWidth="149.0" promptText="ingrese el semestre que cursa">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <cursor>
+                                <Cursor fx:constant="TEXT" />
+                            </cursor>
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                        <JFXButton fx:id="BtnModEstudiante" layoutX="264.0" layoutY="329.0" ripplerFill="#42456b" style="-fx-background-color: #b2cdf7;" text="Save">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="13.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </JFXButton>
+                        <TextField fx:id="TxtModCodUnico" layoutX="360.0" layoutY="273.0" prefHeight="25.0" prefWidth="150.0" promptText="ingrese su cod unico">
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                        <Label layoutX="261.0" layoutY="277.0" text="Código único">
+                            <font>
+                                <Font name="System Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="49.0" layoutY="233.0" text="Carrera">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtModCarrera" layoutX="115.0" layoutY="233.0" prefHeight="25.0" prefWidth="150.0" promptText="ingrese el nombre de la carrera">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                        <Label layoutX="310.0" layoutY="233.0" text="Edad">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtModEdad" layoutX="360.0" layoutY="233.0" prefHeight="25.0" prefWidth="150.0" promptText="Ingrese edad">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionM1" prefHeight="110.0" prefWidth="563.0" style="-fx-background-color: #42456b;" visible="false">
+                    <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="ModificarE" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons16" onMouseExited="#UnFocusButtons16" onMousePressed="#ModE" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@estudiar.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="ModificarC" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons17" onMouseExited="#UnFocusButtons17" onMousePressed="#ModC" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@facultad.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="ModificarA" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons19" onMouseExited="#UnFocusButtons19" onMousePressed="#ModA" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@tiempo-de-trabajo.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="ModificarR" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons18" onMouseExited="#UnFocusButtons18" onMousePressed="#ModR" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@actividad.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionM3" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Label layoutX="160.0" layoutY="214.0" text="Nombre">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="217.0" layoutY="44.0" text="Modificar Carrera">
+                            <font>
+                                <Font name="Roboto Black Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtMCarrera" layoutX="229.0" layoutY="214.0" prefHeight="25.0" prefWidth="164.0" promptText="ingrese el nombre de la carrera">
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="262.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@academico.png" />
+                            </image>
+                        </ImageView>
+                        <JFXButton fx:id="BtnModCarrera" layoutX="272.0" layoutY="350.0" ripplerFill="#42456b" style="-fx-background-color: #b2cdf7;" text="Save">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="13.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </JFXButton>
+                        <JFXComboBox fx:id="ComboMFacultad" layoutX="154.0" layoutY="281.0" />
+                        <JFXComboBox fx:id="ComboMModalidad" layoutX="371.0" layoutY="281.0" />
+                        <Label layoutX="87.0" layoutY="281.0" text="Facultad">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="282.0" layoutY="281.0" text="Modalidad">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionM4" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Label layoutX="136.0" layoutY="214.0" text="Código Único">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="192.0" layoutY="45.0" text="Modificar Recordatorio">
+                            <font>
+                                <Font name="Roboto Black Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtSCRecordatorio" layoutX="255.0" layoutY="214.0" prefHeight="27.0" prefWidth="182.0" promptText="ingrese código único del estudiante">
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="262.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@acceso-denegado.png" />
+                            </image>
+                        </ImageView>
+                        <JFXButton fx:id="BtnModRecor" layoutX="272.0" layoutY="349.0" ripplerFill="#42456b" style="-fx-background-color: #b2cdf7;" text="Save">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="13.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </JFXButton>
+                        <Label layoutX="136.0" layoutY="269.0" text="Nuevo Periodo">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtNuevoPed" layoutX="255.0" layoutY="269.0" prefHeight="27.0" prefWidth="182.0" promptText="ingrese el nuevo periodo">
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionM5" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Label layoutX="146.0" layoutY="215.0" text="ID Actividad">
+                            <font>
+                                <Font name="Roboto Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="208.0" layoutY="47.0" text="Modificar Actividad">
+                            <font>
+                                <Font name="Roboto Black Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtModActividad" layoutX="255.0" layoutY="214.0" prefHeight="27.0" prefWidth="182.0" promptText="ingrese el id de la actividad">
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="262.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@tarea.png" />
+                            </image>
+                        </ImageView>
+                        <JFXButton fx:id="BtnModActividad" layoutX="272.0" layoutY="349.0" ripplerFill="#42456b" style="-fx-background-color: #b2cdf7;" text="Save">
+                            <font>
+                                <Font name="Roboto Bold Italic" size="13.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </JFXButton>
+                        <Label layoutX="73.0" layoutY="270.0" text="Nueva Fecha de Entrega">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtNuevoFechaEnt" layoutX="255.0" layoutY="269.0" prefHeight="27.0" prefWidth="182.0" promptText="yyyy/mm/dd">
+                            <font>
+                                <Font name="System Italic" size="10.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionE1" prefHeight="110.0" prefWidth="563.0" style="-fx-background-color: #42456b;" visible="false">
+                    <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="EliminarE" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons20" onMouseExited="#UnFocusButtons20" onMousePressed="#DelE" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@estudiar.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="EliminarC" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons21" onMouseExited="#UnFocusButtons21" onMousePressed="#DelC" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@facultad.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="EliminarR" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons22" onMouseExited="#UnFocusButtons22" onMousePressed="#DelA" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@tiempo-de-trabajo.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                                <ImageView fx:id="EliminarA" fitHeight="64.0" fitWidth="64.0" onMouseEntered="#FocusButtons23" onMouseExited="#UnFocusButtons23" onMousePressed="#DelR" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@actividad.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Separator prefWidth="200.0" visible="false" />
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionE2" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #FFFFFF;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="93.0" fitWidth="64.0" layoutX="218.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@estudiante1.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="198.0" layoutY="33.0" text="Eliminar Estudiante">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="107.0" layoutY="216.0" text="Código único">
+                            <font>
+                                <Font name="System Italic" size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtEliminarE" layoutX="214.0" layoutY="216.0" prefHeight="25.0" prefWidth="200.0" promptText="ingrese código único del estudiante">
+                            <font>
+                                <Font name="System Italic" size="12.0" />
+                            </font>
+                        </TextField>
+                        <ImageView fitHeight="93.0" fitWidth="64.0" layoutX="282.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@estudiante2.png" />
+                            </image>
+                        </ImageView>
+                        <JFXButton fx:id="BtnEliminarEst" layoutX="272.0" layoutY="293.0" onMousePressed="#DeleteEstudiante" ripplerFill="#42456b" style="-fx-background-color: #b2cdf7;" text="Delete" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionE3" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #FFFFFF;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="250.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@academico.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="170.0" layoutY="224.0" text="Carrera">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="212.0" layoutY="40.0" text="Eliminar Carrera">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtEliminarCarrera" layoutX="234.0" layoutY="224.0" prefHeight="25.0" prefWidth="150.0" promptText="ingrese el nombre de la carrera">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </TextField>
+                        <JFXButton fx:id="BtnEliminarCarrera" layoutX="262.0" layoutY="300.0" onMousePressed="#DeleteCarrera" style="-fx-background-color: #b2cdf7;" text="Delete" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionE4" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #FFFFFF;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="262.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@acceso-denegado.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="132.0" layoutY="231.0" text="ID Recordatorio">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="199.0" layoutY="56.0" text="Eliminar Recordatorio">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtEliminarRecordatorio" layoutX="256.0" layoutY="231.0" prefHeight="25.0" prefWidth="140.0" promptText="Ingrese el id del recordatorio">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </TextField>
+                        <JFXButton fx:id="BtnEliminarRec" layoutX="269.0" layoutY="316.0" onMousePressed="#DeleteRecordatorio" style="-fx-background-color: #b2cdf7;" text="Delete" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="SeccionE5" prefHeight="432.0" prefWidth="563.0" style="-fx-background-color: #FFFFFF;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="250.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@tarea.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="203.0" layoutY="41.0" text="Eliminar Actividad">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="141.0" layoutY="238.0" text="ID Actividad">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="TxtEliminarActividad" layoutX="241.0" layoutY="237.0" prefHeight="27.0" prefWidth="132.0" promptText="ingrese el id de la actividad">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </TextField>
+                        <JFXButton fx:id="BtnEliminarAct" layoutX="256.0" layoutY="315.0" onMousePressed="#DeleteActividad" style="-fx-background-color: #b2cdf7;" text="Delete" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="SeccionLogin" focusTraversable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #42456b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label layoutX="221.0" layoutY="334.0" text="Username:" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Black Italic" size="20.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="180.0" fitWidth="178.0" layoutX="293.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@buho.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="309.0" layoutY="62.0" text="POLICALENDAR" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Black Italic" size="25.0" />
+                    </font>
+                </Label>
+                <Label layoutX="221.0" layoutY="403.0" text="Password:" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Black Italic" size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="TxtUser" layoutX="339.0" layoutY="334.0" style="-fx-border-color: #267099;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <font>
+                        <Font name="Roboto Thin Italic" size="13.0" />
+                    </font>
+                </TextField>
+                <JFXButton fx:id="BtnLogin" layoutX="361.0" layoutY="472.0" onMouseEntered="#FocusButtons11" onMouseExited="#UnFocusButtons11" onMousePressed="#Control" style="-fx-border-color: #267099;" text="Login" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Black Italic" size="16.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+                <JFXButton fx:id="BtnExit" layoutX="703.0" layoutY="14.0" onMouseEntered="#FocusButtons10" onMouseExited="#UnFocusButtons10" onMousePressed="#exit" style="-fx-border-color: #267099;" text="X" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+                <PasswordField fx:id="TxtPassword" layoutX="337.0" layoutY="403.0" style="-fx-border-color: #267099;">
+                    <cursor>
+                        <Cursor fx:constant="TEXT" />
+                    </cursor>
+                    <font>
+                        <Font name="Roboto Thin" size="13.0" />
+                    </font>
+                </PasswordField>
+                <ImageView fx:id="Deny" fitHeight="150.0" fitWidth="200.0" layoutX="342.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@acceso-denegado.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
